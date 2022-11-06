@@ -3,7 +3,7 @@ export const theme = Object.freeze({
     border: '#959595',
     mainBg: '#ffffff',
     text: '#000000',
-    accent: 'lightblue',
+    accent: '#dc758a',
     accentSecondary: '#00aeff',
   },
 
@@ -12,7 +12,7 @@ export const theme = Object.freeze({
   fontsSizes: {
     xs: 12,
     s: 14,
-    m: 16,
+    m: 20,
     l: 32,
     xl: 64,
   },

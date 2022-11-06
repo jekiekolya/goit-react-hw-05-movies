@@ -1,19 +1,25 @@
 // import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // import { ThreeDots } from 'react-loader-spinner';
 
-// import { fetchPhoto } from 'api/fetch-photo';
-// import { Searchbar, ImageGallery, Button, Modal } from './index';
+import { Route, Routes } from 'react-router-dom';
+import { Header, TrendList, MovieDetails } from './index';
 
 // import { Box } from './Box';
-import { Route, Routes } from 'react-router-dom';
+
 import { Container } from './App.styled';
 
 export function App() {
   return (
     <Container>
       <Routes>
-        <Route path="/" element={<div>Start</div>} />
-        <Route path="/about" element={<div>About</div>} />
+        <Route path="/" element={<Header />}>
+          <Route index element={<TrendList />} />
+          <Route path="movies" element={<div>Movies</div>} />
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<div>Cast</div>} />
+            <Route path="reviews" element={<div>Reviews</div>} />
+          </Route>
+        </Route>
       </Routes>
     </Container>
   );
