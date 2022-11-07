@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { LinkStyled, HeaderStyled, List } from './Header.styled';
 
@@ -16,7 +17,9 @@ export default function Header() {
           </List>
         </nav>
       </HeaderStyled>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 }

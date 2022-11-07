@@ -22,6 +22,7 @@ import {
   ItemInfo,
   SectionInfo,
 } from './MovieDetails.styled';
+import { useRef } from 'react';
 
 export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -41,11 +42,17 @@ export default function MovieDetails() {
 
   const voteAverage = (movieDetails?.vote_average * 10).toFixed(0);
 
+  const urlGoBack = useRef(
+    `${location.state?.pathname}${
+      location.state?.pathname ? location.state?.search : ''
+    }`
+  );
+
   return (
     <Box p={20}>
       <GoBackBox>
         <AiOutlineArrowLeft />
-        <GoBackLink to={location.state?.from ?? '/'}>Go Back</GoBackLink>
+        <GoBackLink to={urlGoBack.current ?? '/'}>Go Back</GoBackLink>
       </GoBackBox>
       {movieDetails && !movieDetails.success && movieDetails.status_message && (
         <TitleMovie>{movieDetails.status_message}</TitleMovie>

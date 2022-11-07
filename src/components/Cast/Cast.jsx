@@ -14,7 +14,6 @@ export default function Cast() {
   useEffect(() => {
     fetchMovieCredits(movieId).then(r => setCast(r.cast));
   }, [movieId]);
-  console.log(cast);
 
   return (
     cast && (

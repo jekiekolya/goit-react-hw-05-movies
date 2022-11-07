@@ -22,6 +22,7 @@ export const List = styled.ul`
 
 export const LinkStyled = styled(NavLink)`
   padding: ${p => p.theme.space[1]}px ${p => p.theme.space[3]}px;
+  line-height: 1.2;
 
   &&:hover,
   &&:focus {

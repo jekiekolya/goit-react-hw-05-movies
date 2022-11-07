@@ -1,12 +1,12 @@
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import { ThreeDots } from 'react-loader-spinner';
-
 import { Route, Routes } from 'react-router-dom';
-import { Header, Home, MovieDetails, NotFound, Cast, Reviews } from './index';
+import { lazy } from 'react';
 
-// import { Box } from './Box';
+import { Header, Home, NotFound, Cast, Reviews } from './index';
 
 import { Container } from './App.styled';
+
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
 
 export function App() {
   return (
@@ -14,7 +14,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
-          <Route path="movies" element={<div>Movies</div>} />
+          <Route path="movies" element={<Movies />} />
           <Route path="movies/:movieId" element={<MovieDetails />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
