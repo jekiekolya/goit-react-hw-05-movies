@@ -71,6 +71,10 @@ export const LinkStyled = styled(NavLink)`
     outline: 1px solid ${({ theme }) => theme.colors.accent};
     border-radius: 5px;
   }
+  &&.active {
+    outline: 1px solid ${({ theme }) => theme.colors.accent};
+    border-radius: 5px;
+  }
 `;
 
 export const ListInfo = styled.ul`

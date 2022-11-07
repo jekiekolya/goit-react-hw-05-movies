@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { HiUserGroup } from 'react-icons/hi';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
@@ -28,7 +28,6 @@ export default function MovieDetails() {
   const { movieId } = useParams();
 
   const location = useLocation();
-  console.log('location', location);
 
   useEffect(() => {
     fetchMovieDetails(movieId).then(r => {
@@ -86,6 +85,7 @@ export default function MovieDetails() {
           </SectionInfo>
         </>
       )}
+      <Outlet />
     </Box>
   );
 }

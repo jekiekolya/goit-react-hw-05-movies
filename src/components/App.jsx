@@ -2,7 +2,7 @@
 // import { ThreeDots } from 'react-loader-spinner';
 
 import { Route, Routes } from 'react-router-dom';
-import { Header, Home, MovieDetails, NotFound } from './index';
+import { Header, Home, MovieDetails, NotFound, Cast, Reviews } from './index';
 
 // import { Box } from './Box';
 
@@ -16,8 +16,8 @@ export function App() {
           <Route index element={<Home />} />
           <Route path="movies" element={<div>Movies</div>} />
           <Route path="movies/:movieId" element={<MovieDetails />}>
-            <Route path="cast" element={<div>Cast</div>} />
-            <Route path="reviews" element={<div>Reviews</div>} />
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />
