@@ -1,14 +1,15 @@
+import axios from 'axios';
+
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = '45b0d9a735c6cd370fbf9bc7890ca93c';
 
+// Test Axios
+axios.defaults.baseURL = BASE_URL;
 export async function fetchTrending() {
   try {
-    const response = await fetch(
-      `${BASE_URL}trending/all/day?api_key=${API_KEY}`
-    );
+    const { data } = await axios.get(`trending/all/day?api_key=${API_KEY}`);
 
-    const trendList = await response.json();
-    return trendList;
+    return data;
   } catch (error) {
     return error;
   }
@@ -32,7 +33,6 @@ export async function fetchMovieDetails(movie_id) {
     const response = await fetch(
       `${BASE_URL}movie/${movie_id}?api_key=${API_KEY}&language=en-US`
     );
-
     const movieDetails = await response.json();
     return movieDetails;
   } catch (error) {

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { HiUserGroup } from 'react-icons/hi';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+
 import { MdOutlineReviews } from 'react-icons/md';
 
 import { Box } from 'components/Box';
@@ -8,6 +10,8 @@ import { Box } from 'components/Box';
 import { fetchMovieDetails } from 'api/fetch-data';
 
 import {
+  GoBackBox,
+  GoBackLink,
   Img,
   SectionAbout,
   ListGenres,
@@ -23,29 +27,40 @@ export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
   const { movieId } = useParams();
 
+  const location = useLocation();
+  console.log('location', location);
+
   useEffect(() => {
     fetchMovieDetails(movieId).then(r => {
-      console.log(r);
       setMovieDetails(r);
     });
   }, [movieId]);
 
-  const genres = movieDetails?.genres.map(item => {
+  const genres = movieDetails?.genres?.map(item => {
     return item.name;
   });
 
+  const voteAverage = (movieDetails?.vote_average * 10).toFixed(0);
+
   return (
     <Box p={20}>
-      {movieDetails && (
+      <GoBackBox>
+        <AiOutlineArrowLeft />
+        <GoBackLink to={location.state?.from ?? '/'}>Go Back</GoBackLink>
+      </GoBackBox>
+      {movieDetails && !movieDetails.success && movieDetails.status_message && (
+        <TitleMovie>{movieDetails.status_message}</TitleMovie>
+      )}
+      {movieDetails?.title && (
         <>
           <SectionAbout>
             <Img
-              src={`https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
               alt={movieDetails.title}
             />
             <Wrapper>
               <TitleMovie>{movieDetails.title}</TitleMovie>
-              <p>User Score: 74%</p>
+              <p>User Score: {voteAverage}%</p>
               <h3>Overview</h3>
               <p>{movieDetails.overview}</p>
               <h3>Genres</h3>
