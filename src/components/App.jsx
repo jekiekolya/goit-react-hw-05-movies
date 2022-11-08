@@ -5,12 +5,24 @@ import { Header } from './index';
 
 import { Container } from './App.styled';
 
-const Home = lazy(() => import('../pages/Home/Home'));
-const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
-const Movies = lazy(() => import('../pages/Movies/Movies'));
-const Cast = lazy(() => import('./Cast/Cast'));
-const Reviews = lazy(() => import('./Reviews/Reviews'));
-const NotFound = lazy(() => import('./NotFound/NotFound'));
+const Home = lazy(() =>
+  import('../pages/Home/Home' /* webpackChunkName: "Home" */)
+);
+const MovieDetails = lazy(() =>
+  import(
+    '../pages/MovieDetails/MovieDetails' /* webpackChunkName: "MovieDetails" */
+  )
+);
+const Movies = lazy(() =>
+  import('../pages/Movies/Movies' /* webpackChunkName: "Movies" */)
+);
+const Cast = lazy(() => import('./Cast/Cast' /* webpackChunkName: "Cast" */));
+const Reviews = lazy(() =>
+  import('./Reviews/Reviews' /* webpackChunkName: "Reviews" */)
+);
+const NotFound = lazy(() =>
+  import('./NotFound/NotFound' /* webpackChunkName: "NotFound" */)
+);
 
 export function App() {
   return (
