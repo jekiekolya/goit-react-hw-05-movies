@@ -31,6 +31,8 @@ export const LinkStyled = styled(NavLink)`
   }
 
   &&.active {
+    outline: 1px solid ${({ theme }) => theme.colors.accent};
     color: ${({ theme }) => theme.colors.accent};
+    border-radius: 5px;
   }
 `;
