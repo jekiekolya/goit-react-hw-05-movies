@@ -26,13 +26,10 @@ export const LinkStyled = styled(NavLink)`
 
   &&:hover,
   &&:focus {
-    outline: 1px solid ${({ theme }) => theme.colors.accent};
-    border-radius: 5px;
+    color: ${({ theme }) => theme.colors.accent};
   }
 
   &&.active {
-    outline: 1px solid ${({ theme }) => theme.colors.accent};
     color: ${({ theme }) => theme.colors.accent};
-    border-radius: 5px;
   }
 `;

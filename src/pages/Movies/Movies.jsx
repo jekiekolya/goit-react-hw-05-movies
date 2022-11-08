@@ -30,7 +30,7 @@ export default function Movies() {
   const handleSubmit = e => {
     e.preventDefault();
     setIsLoader(true);
-    const inputValue = e.target.searchMovie.value;
+    const inputValue = e.target.searchMovie.value.trim();
 
     if (inputValue === '') {
       setIsLoader(false);
